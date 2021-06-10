@@ -1,0 +1,21 @@
+<% for (var i =0; i<cadastro.length;i++){%>
+  <tr>
+    <td><%=cadastro[i].Nome%></td>
+    <td><%=cadastro[i].CRM%></td>
+    <td><%=cadastro[i].Telefone%></td>
+    <td><%=cadastro[i].Celular%></td>
+    <td><%=cadastro[i].CEP%></td>
+    <td>
+      <a
+        href="/update-user?id=<%=cadastro[i]._id%>"
+        class="btn border-shadow update"
+      >
+        <span class="text-greadient"><i class="fas fa-pencil-alt"></i></span>
+      </a>
+      <a class="btn border-shadow delete" data-id=<%=cadastro[i]._id%>>
+        <span class="text-greadient"><i class="fas fa-times"></i></span>
+      </a>
+    </td>
+  </tr>
+  <%}%></cadastro.length;i++){%
+>
