@@ -5,7 +5,7 @@ var schema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  CRM: {
+  Registro: {
     type: Number,
     require: true,
     unique: true,
@@ -23,6 +23,14 @@ var schema = new mongoose.Schema({
   CEP: {
     type: Number,
     require: true,
+  },
+  Number: {
+    type: Number,
+    require: true,
+  },
+  Complemento: {
+    type: String,
+    require: false,
   },
   Especialidades: {
     type: String,

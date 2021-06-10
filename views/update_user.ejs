@@ -8,7 +8,7 @@
     <div class="box-nav d-flex justify-between">
       <div class="filter">
         <a href="/"
-          ><i class="fas fa-angle-double-left"></i> Todos os Cadastros</a
+          ><i class="fas fa-angle-double-left"></i>Todos os Cadastros</a
         >
       </div>
     </div>
@@ -22,6 +22,7 @@
     <!--form handling-->
     <form method="POST" id="update_user">
       <div class="new_user">
+        <!--User Name-->
         <div class="form-group">
           <label for="name" class="text-light">Nome</label>
           <input type="hidden" name="id" value="<%=cadastro._id%>" />
@@ -32,15 +33,17 @@
             placeholder="José da Silva"
           />
         </div>
+        <!--User Code-->
         <div class="form-group">
-          <label for="CRM" class="text-light">CRM</label>
+          <label for="Registro" class="text-light">Registro</label>
           <input
             type="tel"
-            name="CRM"
-            value="<%=cadastro.CRM%>"
+            name="Registro"
+            value="<%=cadastro.Registro%>"
             placeholder="00.000.00"
           />
         </div>
+        <!--User Phone-->
         <div class="form-group">
           <label for="Telefone" class="text-light">Telefone Fixo</label>
           <input
@@ -50,6 +53,7 @@
             placeholder="(00)00000-0000"
           />
         </div>
+        <!--User Mobile Phone-->
         <div class="form-group">
           <label for="Celular" class="text-light">Telefone Celular</label>
           <input
@@ -59,84 +63,89 @@
             placeholder="(00)00000-0000"
           />
         </div>
+        <!--User Zip Code. Only works for brazilian zip codes-->
         <div class="form-group">
           <label for="CEP" class="text-light">CEP</label>
           <input type="number" name="CEP" value="<%=cadastro.CEP%>" />
-          <!--especialidades-->
-          <div class="form-group">
+        </div>
+        <!--User Address Number-->
+        <div class="form-group">
+          <label for="Numero" class="text-light">Número</label>
+          <input type="number" name="Numero" value="<%=cadastro.Numero%>" />
+        </div>
+        <!--User Address Complement-->
+        <div class="form-group">
+          <label for="Complemento" class="text-light">Complemento</label>
+          <input
+            type="number"
+            name="Complemento"
+            value="<%=cadastro.Complemento%>"
+          />
+        </div>
+        <!--User Specialities-->
+        <div class="form-group">
+          <label for="Especialidades" class="text-light">Especialidades</label>
+          <div class="radio inline">
+            <input type="checkbox" name="Especialidades" value="Alergologia" />
+            <label for="Especialidades" class="text-light">Alergologia</label>
+          </div>
+          <div class="radio inline">
+            <input type="checkbox" name="Especialidades" value="Angiologia" />
+            <label for="Especialidades" class="text-light">Angiologia</label>
+          </div>
+          <div class="radio inline">
+            <input type="checkbox" name="Especialidades" value="Buco_Maxilo" />
+            <label for="Especialidades" class="text-light">Buco Maxilo</label>
+          </div>
+          <div class="radio inline">
+            <input
+              type="checkbox"
+              name="Especialidades"
+              value="Cardiologia_Clinica"
+            />
             <label for="Especialidades" class="text-light"
-              >Especialidades</label
+              >Cardiologia Clínica</label
             >
-            <div class="radio inline">
-              <input
-                type="checkbox"
-                name="Especialidades"
-                value="Alergologia"
-              />
-              <label for="Especialidades" class="text-light">Alergologia</label>
-            </div>
-            <div class="radio inline">
-              <input type="checkbox" name="Especialidades" value="Angiologia" />
-              <label for="Especialidades" class="text-light">Angiologia</label>
-            </div>
-            <div class="radio inline">
-              <input
-                type="checkbox"
-                name="Especialidades"
-                value="Buco_Maxilo"
-              />
-              <label for="Especialidades" class="text-light">Buco Maxilo</label>
-            </div>
-            <div class="radio inline">
-              <input
-                type="checkbox"
-                name="Especialidades"
-                value="Cardiologia_Clinica"
-              />
-              <label for="Especialidades" class="text-light"
-                >Cardiologia Clínica</label
-              >
-            </div>
-            <div class="radio inline">
-              <input
-                type="checkbox"
-                name="Especialidades"
-                value="Cardiologia_Infantil"
-              />
-              <label for="Especialidades" class="text-light"
-                >Cardiologia Infantil</label
-              >
-            </div>
-            <div class="radio inline">
-              <input
-                type="checkbox"
-                name="Especialidades"
-                value="Cirurgia_Cabeça_E_Pescoço"
-              />
-              <label for="Especialidades" class="text-light"
-                >Cirurgia Cabeça e Pescoço</label
-              >
-            </div>
-            <div class="radio inline">
-              <input
-                type="checkbox"
-                name="Especialidades"
-                value="Cirurgia_Cardiaca"
-              />
-              <label for="Especialidades" class="text-light"
-                >Cirurgia Cardíaca</label
-              >
-            </div>
-            <div class="radio inline">
-              <input
-                type="checkbox"
-                name="Especialidades"
-                value="Cirurgia_Torax"
-              />
-              <label for="Especialidades" class="text-light"
-                >Cirurgia de Torax</label
-              >
-            </div>
+          </div>
+          <div class="radio inline">
+            <input
+              type="checkbox"
+              name="Especialidades"
+              value="Cardiologia_Infantil"
+            />
+            <label for="Especialidades" class="text-light"
+              >Cardiologia Infantil</label
+            >
+          </div>
+          <div class="radio inline">
+            <input
+              type="checkbox"
+              name="Especialidades"
+              value="Cirurgia_Cabeça_E_Pescoço"
+            />
+            <label for="Especialidades" class="text-light"
+              >Cirurgia Cabeça e Pescoço</label
+            >
+          </div>
+          <div class="radio inline">
+            <input
+              type="checkbox"
+              name="Especialidades"
+              value="Cirurgia_Cardiaca"
+            />
+            <label for="Especialidades" class="text-light"
+              >Cirurgia Cardíaca</label
+            >
+          </div>
+          <div class="radio inline">
+            <input
+              type="checkbox"
+              name="Especialidades"
+              value="Cirurgia_Torax"
+            />
+            <label for="Especialidades" class="text-light"
+              >Cirurgia de Torax</label
+            >
           </div>
         </div>
         <div class="form-group">

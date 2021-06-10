@@ -11,9 +11,9 @@ exports.create = (req, res) => {
   //new user
   const user = new Userdb({
     Nome: req.body.Nome,
-    CRM: req.body.CRM,
-    Telefone: req.body.Telefone,
-    Celular: req.body.Celular,
+    Registro: req.body.Registro,
+    Telefone: req.body.Telefone.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3'),
+    Celular: req.body.Celular.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3'),
     CEP: req.body.CEP,
   });
 
