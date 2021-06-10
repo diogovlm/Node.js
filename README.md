@@ -30,3 +30,5 @@ mongoose 5.12.13
 morgan 1.10.0
 nodemon 2.0.7
 </code></pre>
+<h2 class="code-line" data-line-start=39 data-line-end=40 ><a id="Observations_39"></a>Observations</h2>
+<p class="has-line-data" data-line-start="40" data-line-end="41">The folder 0-old_html is where I’m storing all the layout using simple html before coding the .ejs files. I think it is important to keep this folder because it is my first time using .ejs and if I have any doubt in the future I can compare with the files I’m more used to code.</p>
