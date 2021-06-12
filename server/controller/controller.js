@@ -15,6 +15,9 @@ exports.create = (req, res) => {
     Telefone: req.body.Telefone.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3'),
     Celular: req.body.Celular.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3'),
     CEP: req.body.CEP,
+    Numero: req.body.Numero,
+    Complemento: req.body.Complemento,
+    Especialidades: req.body.Especialidades
   });
 
   //save user in the database

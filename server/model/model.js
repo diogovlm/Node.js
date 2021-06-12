@@ -24,7 +24,7 @@ var schema = new mongoose.Schema({
     type: Number,
     require: true,
   },
-  Number: {
+  Numero: {
     type: Number,
     require: true,
   },
@@ -33,7 +33,7 @@ var schema = new mongoose.Schema({
     require: false,
   },
   Especialidades: {
-    type: String,
+    type: Array,
     require: false,
   },
 });

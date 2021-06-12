@@ -86,15 +86,15 @@
         <div class="form-group">
           <label for="Especialidades" class="text-light">Especialidades</label>
           <div class="radio inline">
-            <input type="checkbox" name="Especialidades" value="Alergologia" />
+            <input type="checkbox" name="Especialidades" value="Alergologia" <%for(var i = 0; i<cadastro.Especialidades.length;i++){%><%=cadastro.Especialidades[i]=='Alergologia'?'checked':""%><%}%>/>
             <label for="Especialidades" class="text-light">Alergologia</label>
           </div>
           <div class="radio inline">
-            <input type="checkbox" name="Especialidades" value="Angiologia" />
+            <input type="checkbox" name="Especialidades" value="Angiologia" <%for(var i = 0; i<cadastro.Especialidades.length;i++){%><%=cadastro.Especialidades[i]=='Angiologia'?'checked':""%><%}%>/>
             <label for="Especialidades" class="text-light">Angiologia</label>
           </div>
           <div class="radio inline">
-            <input type="checkbox" name="Especialidades" value="Buco_Maxilo" />
+            <input type="checkbox" name="Especialidades" value="Buco_Maxilo" <%for(var i = 0; i<cadastro.Especialidades.length;i++){%><%=cadastro.Especialidades[i]=='Buco Maxilo'?'checked':""%><%}%>/>
             <label for="Especialidades" class="text-light">Buco Maxilo</label>
           </div>
           <div class="radio inline">
@@ -102,6 +102,7 @@
               type="checkbox"
               name="Especialidades"
               value="Cardiologia_Clinica"
+              <%for(var i = 0; i<cadastro.Especialidades.length;i++){%><%=cadastro.Especialidades[i]=='Cardiologia Clínica'?'checked':""%><%}%>
             />
             <label for="Especialidades" class="text-light"
               >Cardiologia Clínica</label
@@ -112,6 +113,7 @@
               type="checkbox"
               name="Especialidades"
               value="Cardiologia_Infantil"
+              <%for(var i = 0; i<cadastro.Especialidades.length;i++){%><%=cadastro.Especialidades[i]=='Cardiologia Infantil'?'checked':""%><%}%>
             />
             <label for="Especialidades" class="text-light"
               >Cardiologia Infantil</label
@@ -122,6 +124,7 @@
               type="checkbox"
               name="Especialidades"
               value="Cirurgia_Cabeça_E_Pescoço"
+              <%for(var i = 0; i<cadastro.Especialidades.length;i++){%><%=cadastro.Especialidades[i]=='Cirurgia Cabeça e Pescoço'?'checked':""%><%}%>
             />
             <label for="Especialidades" class="text-light"
               >Cirurgia Cabeça e Pescoço</label
@@ -132,6 +135,7 @@
               type="checkbox"
               name="Especialidades"
               value="Cirurgia_Cardiaca"
+              <%for(var i = 0; i<cadastro.Especialidades.length;i++){%><%=cadastro.Especialidades[i]=='Cirurgia Cardíaca'?'checked':""%><%}%>
             />
             <label for="Especialidades" class="text-light"
               >Cirurgia Cardíaca</label
@@ -142,6 +146,7 @@
               type="checkbox"
               name="Especialidades"
               value="Cirurgia_Torax"
+              <%for(var i = 0; i<cadastro.Especialidades.length;i++){%><%=cadastro.Especialidades[i]=='Cirurgia de Torax'?'checked':""%><%}%>
             />
             <label for="Especialidades" class="text-light"
               >Cirurgia de Torax</label
