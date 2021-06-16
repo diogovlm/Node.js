@@ -1,4 +1,36 @@
 var Userdb = require('../model/model');
+const soap = require('soap');
+
+//Correios URL
+const url =
+  'https://apphom.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente?wsdl';
+
+//new variables to get the information
+var Endereco, Bairro, Cidade, UF, NewCEP;
+var ready = false;
+
+//Search the zip code and each variable receive the data
+function buscaCEP(cepTemp) {
+  soap.createClient(url, (err, client) => {
+    if (err) {
+      console.log(err);
+    }
+    client.consultaCEP(
+      {
+        cep: cepTemp,
+      },
+
+      (err, res) => {
+        Bairro = res.return.bairro;
+        Endereco = res.return.end;
+        Cidade = res.return.cidade;
+        UF = res.return.uf;
+        NewCEP = cepTemp.replace(/(\d{5})(\d{3})/, '$1-$2');
+        ready = true;
+      }
+    );
+  });
+}
 
 // create and save new user
 exports.create = (req, res) => {
@@ -9,22 +41,29 @@ exports.create = (req, res) => {
   }
 
   //new user
+    console.log(req.body);
+  var ceptemp = req.body.CEP.toString();
+  buscaCEP(ceptemp);
   const user = new Userdb({
     Nome: req.body.Nome,
     Registro: req.body.Registro,
     Telefone: req.body.Telefone.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3'),
     Celular: req.body.Celular.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3'),
-    CEP: req.body.CEP,
+    CEP: NewCEP,
+    Endereco: Endereco,
+    Bairro: Bairro,
+    Cidade: Cidade,
+    UF: UF,
     Numero: req.body.Numero,
     Complemento: req.body.Complemento,
-    Especialidades: req.body.Especialidades
+    Especialidades: req.body.Especialidades,
   });
-
   //save user in the database
   user
     .save(user)
     .then((data) => {
       //res.send(data);
+      console.log(user);
       res.redirect('/add-user');
     })
     .catch((err) => {
@@ -70,20 +109,34 @@ exports.update = (req, res) => {
       .status(400)
       .send({ message: 'Por favor preencher todos os campos' });
   }
+  
+  //still needs double click
   const id = req.params.id;
-  Userdb.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
-    .then((data) => {
-      if (!data) {
-        res.status(404).send({
-          message: `Não foi possível atualizar o usuário com ${id}. Talvez o usuário não exista mais`,
-        });
-      } else {
-        res.send(data);
-      }
-    })
-    .catch((err) => {
-      res.status(500).send({ message: 'Erro ao atualizar as informações' });
-    });
+  var UpdateCEP = req.body.CEP.toString();
+  buscaCEP(UpdateCEP);
+  req.body.Endereco = Endereco;
+  req.body.Bairro = Bairro;
+  req.body.Cidade = Cidade;
+  req.body.UF = UF;
+  req.body.CEP = NewCEP;
+  req.body.Telefone.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
+  req.body.Celular.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
+  
+  if (ready) {
+    Userdb.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
+      .then((data) => {
+        if (!data) {
+          res.status(404).send({
+            message: `Não foi possível atualizar o usuário com ${id}. Talvez o usuário não exista mais`,
+          });
+        } else {
+          res.send(data);
+        }
+      })
+      .catch((err) => {
+        res.status(500).send({ message: 'Erro ao atualizar as informações' });
+      });
+  }
 };
 
 //Delete a user with specified user id in the request

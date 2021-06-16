@@ -20,7 +20,7 @@ $('#update_user').submit(function (event) {
   };
 
   $.ajax(request).done(function (response) {
-    alert('Data Updated Successfully');
+    alert('Cadastro atualizado com sucesso');
   });
 });
 
@@ -36,7 +36,7 @@ if (window.location.pathname == '/') {
 
     if (confirm('Você realmente deseja deletar esse cadastro?')) {
       $.ajax(request).done(function (response) {
-        alert('Data Deleted Successfully');
+        alert('Cadastro deletado com sucesso');
         location.reload();
       });
     }

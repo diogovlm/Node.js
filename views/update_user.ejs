@@ -66,7 +66,7 @@
         <!--User Zip Code. Only works for brazilian zip codes-->
         <div class="form-group">
           <label for="CEP" class="text-light">CEP</label>
-          <input type="number" name="CEP" value="<%=cadastro.CEP%>" />
+          <input type="text" name="CEP" value="<%=cadastro.CEP%>" />
         </div>
         <!--User Address Number-->
         <div class="form-group">
@@ -77,84 +77,71 @@
         <div class="form-group">
           <label for="Complemento" class="text-light">Complemento</label>
           <input
-            type="number"
+            type="text"
             name="Complemento"
             value="<%=cadastro.Complemento%>"
           />
         </div>
         <!--User Specialities-->
+    <div class="form-group">
+      <label for="Especialidades" class="text-light">Especialidades</label>
+      <div class="radio inline">
+        <input type="checkbox" name="Especialidades" value="Alergologia" />
+        <label for="Especialidades" class="text-light">Alergologia</label>
+      </div>
+      <div class="radio inline">
+        <input type="checkbox" name="Especialidades" value="Angiologia" />
+        <label for="Especialidades" class="text-light">Angiologia</label>
+      </div>
+      <div class="radio inline">
+        <input type="checkbox" name="Especialidades" value="Buco_Maxilo" />
+        <label for="Especialidades" class="text-light">Buco Maxilo</label>
+      </div>
+      <div class="radio inline">
+        <input
+          type="checkbox"
+          name="Especialidades"
+          value="Cardiologia_Clinica"
+        />
+        <label for="Especialidades" class="text-light"
+          >Cardiologia Clínica</label
+        >
+      </div>
+      <div class="radio inline">
+        <input
+          type="checkbox"
+          name="Especialidades"
+          value="Cardiologia_Infantil"
+        />
+        <label for="Especialidades" class="text-light"
+          >Cardiologia Infantil</label
+        >
+      </div>
+      <div class="radio inline">
+        <input
+          type="checkbox"
+          name="Especialidades"
+          value="Cirurgia_Cabeça_E_Pescoço"
+        />
+        <label for="Especialidades" class="text-light"
+          >Cirurgia Cabeça e Pescoço</label
+        >
+      </div>
+      <div class="radio inline">
+        <input
+          type="checkbox"
+          name="Especialidades"
+          value="Cirurgia_Cardiaca"
+        />
+        <label for="Especialidades" class="text-light">Cirurgia Cardíaca</label>
+      </div>
+      <div class="radio inline">
+        <input type="checkbox" name="Especialidades" value="Cirurgia_Torax" />
+        <label for="Especialidades" class="text-light">Cirurgia de Torax</label>
+      </div>
+    </div>
         <div class="form-group">
-          <label for="Especialidades" class="text-light">Especialidades</label>
-          <div class="radio inline">
-            <input type="checkbox" name="Especialidades" value="Alergologia" <%for(var i = 0; i<cadastro.Especialidades.length;i++){%><%=cadastro.Especialidades[i]=='Alergologia'?'checked':""%><%}%>/>
-            <label for="Especialidades" class="text-light">Alergologia</label>
-          </div>
-          <div class="radio inline">
-            <input type="checkbox" name="Especialidades" value="Angiologia" <%for(var i = 0; i<cadastro.Especialidades.length;i++){%><%=cadastro.Especialidades[i]=='Angiologia'?'checked':""%><%}%>/>
-            <label for="Especialidades" class="text-light">Angiologia</label>
-          </div>
-          <div class="radio inline">
-            <input type="checkbox" name="Especialidades" value="Buco_Maxilo" <%for(var i = 0; i<cadastro.Especialidades.length;i++){%><%=cadastro.Especialidades[i]=='Buco Maxilo'?'checked':""%><%}%>/>
-            <label for="Especialidades" class="text-light">Buco Maxilo</label>
-          </div>
-          <div class="radio inline">
-            <input
-              type="checkbox"
-              name="Especialidades"
-              value="Cardiologia_Clinica"
-              <%for(var i = 0; i<cadastro.Especialidades.length;i++){%><%=cadastro.Especialidades[i]=='Cardiologia Clínica'?'checked':""%><%}%>
-            />
-            <label for="Especialidades" class="text-light"
-              >Cardiologia Clínica</label
-            >
-          </div>
-          <div class="radio inline">
-            <input
-              type="checkbox"
-              name="Especialidades"
-              value="Cardiologia_Infantil"
-              <%for(var i = 0; i<cadastro.Especialidades.length;i++){%><%=cadastro.Especialidades[i]=='Cardiologia Infantil'?'checked':""%><%}%>
-            />
-            <label for="Especialidades" class="text-light"
-              >Cardiologia Infantil</label
-            >
-          </div>
-          <div class="radio inline">
-            <input
-              type="checkbox"
-              name="Especialidades"
-              value="Cirurgia_Cabeça_E_Pescoço"
-              <%for(var i = 0; i<cadastro.Especialidades.length;i++){%><%=cadastro.Especialidades[i]=='Cirurgia Cabeça e Pescoço'?'checked':""%><%}%>
-            />
-            <label for="Especialidades" class="text-light"
-              >Cirurgia Cabeça e Pescoço</label
-            >
-          </div>
-          <div class="radio inline">
-            <input
-              type="checkbox"
-              name="Especialidades"
-              value="Cirurgia_Cardiaca"
-              <%for(var i = 0; i<cadastro.Especialidades.length;i++){%><%=cadastro.Especialidades[i]=='Cirurgia Cardíaca'?'checked':""%><%}%>
-            />
-            <label for="Especialidades" class="text-light"
-              >Cirurgia Cardíaca</label
-            >
-          </div>
-          <div class="radio inline">
-            <input
-              type="checkbox"
-              name="Especialidades"
-              value="Cirurgia_Torax"
-              <%for(var i = 0; i<cadastro.Especialidades.length;i++){%><%=cadastro.Especialidades[i]=='Cirurgia de Torax'?'checked':""%><%}%>
-            />
-            <label for="Especialidades" class="text-light"
-              >Cirurgia de Torax</label
-            >
-          </div>
-        </div>
-        <div class="form-group">
-          <button type="submit" class="btn text-dark update">Salvar</button>
+          <button type="submit" class="btn text-dark update")>Salvar</button>
         </div>
       </div>
     </form>

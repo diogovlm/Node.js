@@ -3,41 +3,41 @@ const mongoose = require('mongoose');
 var schema = new mongoose.Schema({
   Nome: {
     type: String,
-    required: true,
   },
   Registro: {
     type: Number,
-    require: true,
-    unique: true,
   },
   Telefone: {
-    type: Number,
-    require: true,
-    unique: true,
+    type: String,
   },
   Celular: {
-    type: Number,
-    require: true,
-    unique: true,
+    type: String,
   },
   CEP: {
-    type: Number,
-    require: true,
+    type: String,
+  },
+  Endereco: {
+    type: String,
+  },
+  Bairro: {
+    type: String,
+  },
+  Cidade: {
+    type: String,
+  },
+  UF: {
+    type: String,
   },
   Numero: {
     type: Number,
-    require: true,
   },
   Complemento: {
     type: String,
-    require: false,
   },
   Especialidades: {
     type: Array,
-    require: false,
   },
 });
-
 const Userdb = mongoose.model('userdb', schema);
 
 module.exports = Userdb;
