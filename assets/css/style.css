@@ -18,11 +18,6 @@ a {
   font-family: 'PT Sans', sans-serif;
 }
 
-.container {
-  max-width: 1023px;
-  margin: auto;
-}
-
 .nav-brand {
   font-size: 1.5em;
   font-weight: bold;
@@ -32,13 +27,13 @@ a {
   display: flex;
   flex-warp: wrap;
 }
-
 .justify-between {
   justify-content: space-between;
 }
 .text-center {
   text-align: center;
 }
+
 .border-shadow {
   border: 1px solid var(--border-btn);
   box-shadow: 1px 3px 10px #e9ecef;
@@ -68,13 +63,8 @@ a {
 }
 
 #site-main {
-  margin-top: 6em;
+  margin-top: 1em;
   font-family: 'Barlow', sans-serif;
-}
-
-#site-main .container .box-nav > a {
-  font-size: 1em;
-  padding: 0.5em 1em;
 }
 
 #site-main .container form {
@@ -92,12 +82,13 @@ table {
   vertical-align: top;
   text-align: center;
   border-top: 1px solid var(--border);
+  font-size: 0.9em;
 }
 
 .table td > a.btn {
-  padding: 0.3em 1em;
-  font-size: 1.1em;
-  margin: 0 2em;
+  padding: 0.1em 0.1em;
+  font-size: 1em;
+  margin: 0 0.5em;
 }
 
 .table tr:hover {
@@ -114,31 +105,7 @@ table {
   border-color: #32383e;
 }
 
-@media only screen and (max-width: 1024px) {
-  table,
-  thead,
-  tbody,
-  th,
-  td,
-  tr {
-    display: block;
-  }
-  thead tr {
-    position: absolute;
-    top: -9999px;
-    left: -9999px;
-  }
-  tr {
-    border: 1px solid var (--border);
-  }
-  td {
-    border: none;
-    position: relative;
-  }
-}
-
 /*add user & update user template*/
-
 .form-title {
   margin-top: 2em;
 }
@@ -157,15 +124,9 @@ table {
   margin: 0.4em 0;
 }
 
-#update_user .form-group input[type='text'],
-#add_user .form-group input[type='text'] {
-  width: 100%;
-  padding: 0.6em 1em;
-  margin: 0.5em 0;
-  border: 1px solid var(--border);
-  font-family: 'Barlow', sans-serif;
-  font-size: 1em;
-  border-radius: 0.2em;
+#update_user .form-group input[name='Nome'],
+#add_user .form-group input[name='Nome'] {
+  width: 50%;
 }
 
 #update_user .form-group input[type='checkbox'],
@@ -174,7 +135,7 @@ table {
 }
 
 #update_user .form-group .btn,
-#add .form-group .btn {
+#add_user .form-group .btn {
   width: 100%;
   padding: 0.9em 1em;
   background-color: #16db93;
@@ -190,4 +151,49 @@ table {
 #add .form-group- .btn:hover {
   background-color: var(--dark);
   color: var(--border);
+}
+
+@media only screen and (min-width: 1024px) {
+  .container {
+    margin-left: 1em !important;
+    margin: auto;
+  }
+
+  #site-main .container .box-nav > a {
+    font-size: 1em;
+    padding: 0.5em 1em;
+  }
+}
+@media only screen and (max-width: 1024px) {
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+  }
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+  tr {
+    border-style: solid;
+    border-color: #8dd6d6;
+    margin-bottom: 1.6em;
+  }
+  td {
+    border: none;
+    position: relative;
+  }
+
+  #site-main .container .box-nav > a {
+    font-size: 1em;
+    padding: 0.5em 1em;
+    margin: auto;
+  }
+  .container {
+    margin: auto;
+  }
 }
