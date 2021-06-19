@@ -6,29 +6,33 @@ const url =
   'https://apphom.correios.com.br/SigepMasterJPA/AtendeClienteService/AtendeCliente?wsdl';
 
 //new variables to get the information
-var Endereco, Bairro, Cidade, UF, NewCEP;
-var ready = false;
+var Endereco, Bairro, Cidade, UF;
+var cepResponse;
 
-//Search the zip code and each variable receive the data
+//Search the zip code and each variable receive the data.
+//Also it was obligatory to create a promise to make sure the correct data would be stored
 function buscaCEP(cepTemp) {
-  soap.createClient(url, (err, client) => {
-    if (err) {
-      console.log(err);
-    }
-    client.consultaCEP(
-      {
-        cep: cepTemp,
-      },
-
-      (err, res) => {
-        Bairro = res.return.bairro;
-        Endereco = res.return.end;
-        Cidade = res.return.cidade;
-        UF = res.return.uf;
-        NewCEP = cepTemp.replace(/(\d{5})(\d{3})/, '$1-$2');
-        ready = true;
+  return new Promise(function (resolve, reject) {
+    soap.createClient(url, (err, client) => {
+      if (err) {
+        console.log(err);
       }
-    );
+      client.consultaCEP(
+        {
+          cep: cepTemp,
+        },
+
+        (err, res) => {
+          cepResponse = [
+            res.return.end,
+            res.return.bairro,
+            res.return.cidade,
+            res.return.uf,
+          ];
+          resolve(cepResponse);
+        }
+      );
+    });
   });
 }
 
@@ -41,36 +45,36 @@ exports.create = (req, res) => {
   }
 
   //new user
-    console.log(req.body);
-  var ceptemp = req.body.CEP.toString();
-  buscaCEP(ceptemp);
-  const user = new Userdb({
-    Nome: req.body.Nome,
-    Registro: req.body.Registro,
-    Telefone: req.body.Telefone.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3'),
-    Celular: req.body.Celular.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3'),
-    CEP: NewCEP,
-    Endereco: Endereco,
-    Bairro: Bairro,
-    Cidade: Cidade,
-    UF: UF,
-    Numero: req.body.Numero,
-    Complemento: req.body.Complemento,
-    Especialidades: req.body.Especialidades,
-  });
-  //save user in the database
-  user
-    .save(user)
-    .then((data) => {
-      //res.send(data);
-      console.log(user);
-      res.redirect('/add-user');
-    })
-    .catch((err) => {
-      res.status(500).send({
-        message: err.message || 'Erro na criação de cadastro',
-      });
+  buscaCEP(req.body.CEP).then((cepResponse) => {
+    const user = new Userdb({
+      Nome: req.body.Nome,
+      Registro: req.body.Registro,
+      Telefone: req.body.Telefone.replace(
+        /(\d{2})(\d{5})(\d{4})/,
+        '($1) $2-$3'
+      ),
+      Celular: req.body.Celular.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3'),
+      CEP: req.body.CEP.replace(/(\d{5})(\d{3})/, '$1-$2'),
+      Endereco: cepResponse[0],
+      Bairro: cepResponse[1],
+      Cidade: cepResponse[2],
+      UF: cepResponse[3],
+      Numero: req.body.Numero,
+      Complemento: req.body.Complemento,
+      Especialidades: req.body.Especialidades,
     });
+    //save user in the database
+    user
+      .save(user)
+      .then((data) => {
+        res.redirect('/add-user');
+      })
+      .catch((err) => {
+        res.status(500).send({
+          message: err.message || 'Erro na criação de cadastro',
+        });
+      });
+  });
 };
 
 //retrieve and return all users/ retrieve and return a single user
@@ -109,20 +113,18 @@ exports.update = (req, res) => {
       .status(400)
       .send({ message: 'Por favor preencher todos os campos' });
   }
-  
-  //still needs double click
+
   const id = req.params.id;
-  var UpdateCEP = req.body.CEP.toString();
-  buscaCEP(UpdateCEP);
-  req.body.Endereco = Endereco;
-  req.body.Bairro = Bairro;
-  req.body.Cidade = Cidade;
-  req.body.UF = UF;
-  req.body.CEP = NewCEP;
-  req.body.Telefone.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
-  req.body.Celular.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
-  
-  if (ready) {
+  buscaCEP(req.body.CEP).then((cepResponse) => {
+    req.body.Endereco = cepResponse[0];
+    req.body.Bairro = cepResponse[1];
+    req.body.Cidade = cepResponse[2];
+    req.body.UF = cepResponse[3];
+    req.body.CEP = req.body.CEP.replace(/(\d{5})(\d{3})/, '$1-$2');
+    req.body.Telefone.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
+    req.body.Celular.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
+    
+
     Userdb.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
       .then((data) => {
         if (!data) {
@@ -136,7 +138,7 @@ exports.update = (req, res) => {
       .catch((err) => {
         res.status(500).send({ message: 'Erro ao atualizar as informações' });
       });
-  }
+  });
 };
 
 //Delete a user with specified user id in the request

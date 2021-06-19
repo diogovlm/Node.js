@@ -7,16 +7,23 @@ $('#update_user').submit(function (event) {
 
   var unindexed_array = $(this).serializeArray();
   var data = {};
-
-  console.log(unindexed_array);
+  //This 2 variables will get the full Specialities data instead of only the last one
+  var checkboxes = document.getElementsByName("Especialidades");
+  var updateEspecialidades = [];
+  for (var i = 0; i<checkboxes.length;i++){
+    if (checkboxes[i].checked){
+      updateEspecialidades.push(checkboxes[i].value);
+    }
+  }
   $.map(unindexed_array, function (n, i) {
     data[n['name']] = n['value'];
+    data.Especialidades = updateEspecialidades;
   });
 
   var request = {
     url: `http://localhost:3000/api/users/${data.id}`,
     method: 'PUT',
-    data: data,
+    data: data
   };
 
   $.ajax(request).done(function (response) {
@@ -42,3 +49,4 @@ if (window.location.pathname == '/') {
     }
   });
 }
+

@@ -5,9 +5,9 @@
     <td><%=cadastro[i].Telefone%></td>
     <td><%=cadastro[i].Celular%></td>
     <td><%=cadastro[i].CEP%></td>
-    <td><%=cadastro[i].Endereco%> <%=cadastro[i].Numero%>, <%=cadastro[i].Complemento%> - <%=cadastro[i].Bairro%></td>
+    <td><%=cadastro[i].Endereco%> <%=cadastro[i].Numero%> <%if (cadastro[i].Complemento!=''){%>,<%}%> <%=cadastro[i].Complemento%> - <%=cadastro[i].Bairro%></td>
     <td><%=cadastro[i].Cidade%> - <%=cadastro[i].UF%></td>
-    <td><%=cadastro[i].Especialidades%></td>
+    <td><%for(var j = 0; j<cadastro[i].Especialidades.length;j++){%><%=cadastro[i].Especialidades[j]%><%if (j+1!=cadastro[i].Especialidades.length){%>, <%}}%></td>
     <td>
       <a
         href="/update-user?id=<%=cadastro[i]._id%>"
