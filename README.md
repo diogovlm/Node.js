@@ -1,6 +1,6 @@
 <h1 class="code-line" data-line-start=0 data-line-end=1 ><a id="Nodejs__Cadastro_v11_0"></a>Node.js - Cadastro v1.1</h1>
 <h2 class="code-line" data-line-start=1 data-line-end=2 ><a id="My_first_Nodejs_project_1"></a>My first Node.js project</h2>
-<p class="has-line-data" data-line-start="3" data-line-end="4">This is my first Node.js project and I will keep improving it with different functions and tools. This project is based in a real job test and the goal is to learn all the requirements and use the knowledge in this project</p>
+<p class="has-line-data" data-line-start="3" data-line-end="4">This is my first Node.js project and I will keep improving it with different functions and tools. This project is based in a real job test and the goal is to learn all the requirements and how to apply it</p>
 <h2 class="code-line" data-line-start=6 data-line-end=7 ><a id="Features_6"></a>Features</h2>
 <p class="has-line-data" data-line-start="8" data-line-end="9">This new version offers basic CRUD operations, searching address with a zip code and saving in the database.</p>
 <ul>
