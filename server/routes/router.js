@@ -22,6 +22,12 @@ route.get('/add-user', services.add_user);
  */
 route.get('/update-user', services.update_user);
 
+/**
+ * @description Get users through search bar
+ * @method GET /search 
+ */
+//route.get('/search', services.search);
+
 //API
 route.post('/api/users', controller.create);
 route.get('/api/users', controller.find);

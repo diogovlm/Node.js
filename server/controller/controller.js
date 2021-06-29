@@ -79,19 +79,15 @@ exports.create = (req, res) => {
 
 //retrieve and return all users/ retrieve and return a single user
 exports.find = (req, res) => {
-  if (req.query.id) {
-    const id = req.query.id;
-
-    Userdb.findById(id)
-      .then((data) => {
-        if (!data) {
-          res.status(404).send({ message: 'Usuário não encontrado' });
-        } else {
-          res.send(data);
-        }
+  if (req.query.Search) {
+    Userdb.find({ $text: { $search: req.query.Search } })
+      .then((user) => {
+        res.send(user);
       })
       .catch((err) => {
-        res.status(500).send({ message: 'Erro ao identificar o usuário' });
+        res.status(500).send({
+          message: err.message || 'Aconteceu um erro na busca de cadastro',
+        });
       });
   } else {
     Userdb.find()
@@ -113,7 +109,6 @@ exports.update = (req, res) => {
       .status(400)
       .send({ message: 'Por favor preencher todos os campos' });
   }
-
   const id = req.params.id;
   buscaCEP(req.body.CEP).then((cepResponse) => {
     req.body.Endereco = cepResponse[0];
@@ -123,7 +118,6 @@ exports.update = (req, res) => {
     req.body.CEP = req.body.CEP.replace(/(\d{5})(\d{3})/, '$1-$2');
     req.body.Telefone.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
     req.body.Celular.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
-    
 
     Userdb.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
       .then((data) => {

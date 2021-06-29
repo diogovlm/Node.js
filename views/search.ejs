@@ -1,0 +1,43 @@
+<!--include header-->
+<%-include('include/_header')%>
+<!--/include header-->
+
+<!--Main Site-->
+<main id="site-main">
+  <div class="container">
+    <div class="box-nav d-flex justify-between">
+      <div class="filter">
+        <a href="/"
+          ><i class="fas fa-angle-double-left"></i> Todos os Cadastros</a
+        >
+      </div>
+    </div>
+
+    </div>
+    <!--form handling-->
+    <form action="/" method="POST">
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th>Nome</th>
+              <th>Registro</th>
+              <th>Telefone Fixo</th>
+              <th>Telefone Celular</th>
+              <th>CEP</th>
+              <th>Endereco</th>
+              <th>Cidade</th>
+              <th>Especialidades</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%-include('include/_show')%>
+          </tbody>
+        </table>
+      </form>
+</main>
+<!--/Main Site-->
+
+<!--include footer-->
+<%-include('include/_footer')%>
+<!--/include footer-->

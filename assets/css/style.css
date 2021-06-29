@@ -68,7 +68,7 @@ a {
 }
 
 #site-main .container form {
-  margin: 2em 0;
+  margin: 0.5em 0;
 }
 
 table {
@@ -79,7 +79,6 @@ table {
 .table td,
 .table th {
   padding: 0.75em;
-  vertical-align: top;
   text-align: center;
   border-top: 1px solid var(--border);
   font-size: 0.9em;
@@ -153,9 +152,19 @@ table {
   color: var(--border);
 }
 
+
+.search-engine .form-group {
+  float: left;
+}
+
+.search-engine {
+    margin-top: 0.5em;
+}
+
 @media only screen and (min-width: 1024px) {
   .container {
     margin-left: 1em !important;
+    margin-right: 1em!important;
     margin: auto;
   }
 
