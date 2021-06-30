@@ -20,10 +20,9 @@ exports.update_user = (req, res) => {
   axios
     .get('http://localhost:3000/api/users', { params: { id: req.query.id } })
     .then(function (userdata) {
-      console.log(userdata);
       res.render('update_user', { cadastro: userdata.data });
     })
     .catch((err) => {
       res.send(err);
-    });
+    }); 
 };
