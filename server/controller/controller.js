@@ -89,7 +89,23 @@ exports.find = (req, res) => {
           message: err.message || 'Aconteceu um erro na busca de cadastro',
         });
       });
-  } else {
+  } 
+  else if(req.query.id){
+    const id = req.query.id;
+    Userdb.findById(id).then(data=>{
+      if(!data){
+        res.status(404).send({message:"Usuário nao encontrado"});
+      }
+      else{
+        res.send(data);
+      }
+    }).catch(err=>
+      {
+        res.status(500).send({message:"Usuário nao encontrado"});
+      })
+
+  }
+  else {
     Userdb.find()
       .then((user) => {
         res.send(user);
