@@ -5,7 +5,7 @@ var schema = new mongoose.Schema({
     type: String,
   },
   Registro: {
-    type: Number,
+    type: String,
   },
   Telefone: {
     type: String,
@@ -29,7 +29,7 @@ var schema = new mongoose.Schema({
     type: String,
   },
   Numero: {
-    type: Number,
+    type: String,
   },
   Complemento: {
     type: String,
